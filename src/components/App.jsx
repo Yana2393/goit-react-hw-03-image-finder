@@ -97,8 +97,4 @@ export class App extends Component {
 
 App.propTypes = {
   onSubmit: PropTypes.func,
-  photos: PropTypes.array,
-  loading: PropTypes.bool,
-  largeImage: PropTypes.string,
-  showBtn: PropTypes.bool,
 };
