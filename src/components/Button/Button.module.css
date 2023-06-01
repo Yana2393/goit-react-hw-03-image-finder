@@ -1,0 +1,15 @@
+.loadMore {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.loadMoreButton {
+    background-color: darkslateblue;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+    text-transform: uppercase;
+    border: none;
+}

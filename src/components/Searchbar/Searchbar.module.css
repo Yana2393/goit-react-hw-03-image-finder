@@ -1,0 +1,30 @@
+.searchbarWrap {
+    padding: 10px;
+    background-color: darkslateblue;
+}
+
+.searchbar {
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.button {
+    background-color: #fff;
+    border: none;
+    padding: 5px;
+}
+
+.input {
+    background-color: #fff;
+    color: black;
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 30%;
+    
+}
