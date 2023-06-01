@@ -45,7 +45,7 @@ class Searchbar extends Component {
 }
 
 Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   placeholder: PropTypes.string,
 };
 

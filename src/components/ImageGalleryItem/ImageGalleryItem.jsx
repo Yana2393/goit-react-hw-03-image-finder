@@ -15,8 +15,8 @@ class ImageGalleryItem extends Component {
 }
 
 ImageGalleryItem.propTypes = {
-  src: PropTypes.object.isRequired,
-  handleImageClick: PropTypes.func.isRequired,
+  src: PropTypes.object,
+  handleImageClick: PropTypes.func,
 };
 
 export default ImageGalleryItem;
