@@ -25,7 +25,7 @@ class Modal extends Component {
 
   render() {
     return (
-      <div className={css.overlay} onClick={(event) => this.handleOverlayClick(event)}>
+      <div className={css.overlay} onClick={ this.handleOverlayClick}>
         <div className={css.modal}>
           <div className={css.modalContent} onClick={this.handleOverlayClick}>
             <img className={css.modalContentImg} src={this.props.largeImage} alt="" />

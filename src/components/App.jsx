@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
@@ -63,7 +62,6 @@ export class App extends Component {
   handleClick = () => {
     this.setState(prev => ({
       page: prev.page + 1,
-      loading: true,
     }));
   };
 
@@ -96,7 +94,3 @@ export class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  onSubmit: PropTypes.func,
-};

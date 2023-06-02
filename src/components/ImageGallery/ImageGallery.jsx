@@ -1,11 +1,9 @@
-import { Component } from "react";
+import React from "react";
 import css from './ImageGallery.module.css'
 
-class ImageGallery extends Component {
-  render() {
+function ImageGallery (props) {
 
-    return <ul className={css.gallery}>{this.props.children}</ul>;
-  }
+    return <ul className={css.gallery}>{props.children}</ul>;
 }
 
 export default ImageGallery;
