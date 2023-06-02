@@ -22,30 +22,32 @@ export class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { query, page } = this.state;
     if (prevState.query !== query || prevState.page !== page) {
+      this.setState({ loading: true });
       getImages(query, page)
-        .then(({ photos, total_results }) => {
+        .then(({ hits: photos, totalHits: total_results }) => {
           if (!photos.length) {
-            this.setState({ isEmpty: true, loading:false, showBtn: false});
-            return alert('Bad request');
+            this.setState({ isEmpty: true, showBtn: false });
+            alert('Bad request');
+            return;
           }
           this.setState(prevState => ({
             photos: [...prevState.photos, ...photos],
             showBtn: page < Math.ceil(total_results / 15),
-            loading: false
           }));
         })
         .catch(error => {
-          this.setState({
-            error: error.message,
-            loading: false
-          });
+          this.setState({ error: error.message });
+        })
+        .finally(() => {
+          this.setState({ loading: false });
         });
     }
   }
 
   onSubmit = query => {
     if (this.state.query === query) {
-      return alert('Already shown');
+      alert('Already shown');
+      return;
     }
     this.setState({
       query,
@@ -65,9 +67,9 @@ export class App extends Component {
     }));
   };
 
-  handleImageClick = src => {
+  handleImageClick = largeImage => {
     this.setState({
-      largeImage: src.large,
+      largeImage,
     });
   };
 
@@ -78,16 +80,16 @@ export class App extends Component {
   };
 
   render() {
-    const { photos, loading, largeImage, showBtn} = this.state;
+    const { photos, loading, largeImage, showBtn } = this.state;
     return (
       <div>
         <Searchbar onSubmit={this.onSubmit} />
         <ImageGallery>
-          {photos.map(({ id, src }) => (
-            <ImageGalleryItem key={id} src={src} handleImageClick={this.handleImageClick} />
+          {photos.map(({ id, webformatURL, largeImageURL }) => (
+            <ImageGalleryItem key={id} webformatURL={webformatURL} largeImageURL={largeImageURL} handleImageClick={this.handleImageClick} />
           ))}
         </ImageGallery>
-        {largeImage && <Modal src={largeImage} modalClose={this.handleClose} />}
+        {largeImage && <Modal largeImage={largeImage} modalClose={this.handleClose} />}
         {loading && <Loader />}
         {showBtn && <Button handleClick={this.handleClick} />}
       </div>

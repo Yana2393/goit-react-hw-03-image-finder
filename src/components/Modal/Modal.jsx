@@ -28,7 +28,7 @@ class Modal extends Component {
       <div className={css.overlay} onClick={(event) => this.handleOverlayClick(event)}>
         <div className={css.modal}>
           <div className={css.modalContent} onClick={this.handleOverlayClick}>
-            <img className={css.modalContentImg} src={this.props.src} alt="" />
+            <img className={css.modalContentImg} src={this.props.largeImage} alt="" />
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
   modalClose: PropTypes.func,
-  src: PropTypes.string,
+  largeImage: PropTypes.string
 };
 
 export default Modal;
